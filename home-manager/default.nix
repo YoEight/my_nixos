@@ -13,8 +13,6 @@ in
 
   home.packages = with pkgs; [
     nvim
-    _1password
-    _1password-gui
     jetbrains-toolbox
     slack
     git
