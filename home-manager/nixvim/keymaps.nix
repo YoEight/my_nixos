@@ -3,6 +3,7 @@
     enable = true;
 
     registrations = {
+      "<leader>g" = "+go";
       "<leader>w" = "+windows";
       "<leader>f" = "+file";
       "<leader>c" = "+code";
@@ -12,6 +13,18 @@
   };
 
   keymaps = [
+    ###### Visual
+    { key = "K"
+    ; action = "<cmd>lua vim.lsp.buf.hover()<cr>"
+    ; options = { desc = "Show type information"; }
+    ;
+    }
+
+    { key = "<C-k>"
+    ; action = "<cmd>lua vim.lsp.buf.signature_help()<cr>"
+    ; options = { desc = "Show signature help"; }
+    ;
+    }
     ###### Root
     { key = "<leader>a"
     ; action = ":lua vim.lsp.buf.add_workspace_folder()<cr>"
@@ -24,7 +37,6 @@
     ; options = { desc = "List built-in pickers and run them on"; }
     ;
     }
-
     ###### Windows
     { key = "<leader>ww"
     ; action = ":wincmd w<cr>"
@@ -153,7 +165,7 @@
     }
 
     { key = "<leader>cf"
-    ; action = "lua function() vim.lsp.buf.format { async = true } end"
+    ; action = "<cmd>lua vim.lsp.buf.format({ async = true })<cr>"
     ; options = { desc = "Format current buffer"; }
     ;
     }
@@ -171,8 +183,26 @@
     }
 
     { key = "<leader>cr"
-    ; action = "lua vim.lsp.buf.rename()<cr>"
+    ; action = "<cmd>lua vim.lsp.buf.rename()<cr>"
     ; options = { desc = "Rename symbol"; }
+    ;
+    }
+    ###### Go
+    { key = "<leader>gD"
+    ; action = "<cmd>lua vim.lsp.buf.declaration()<cr>"
+    ; options = { desc = "Go to declaration"; }
+    ;
+    }
+
+    { key = "<leader>gd"
+    ; action = "<cmd>lua vim.lsp.buf.definition()<cr>"
+    ; options = { desc = "Go to definition"; }
+    ;
+    }
+
+    { key = "<leader>gr"
+    ; action = "<cmd>lua vim.lsp.buf.references()<cr>"
+    ; options = { desc = "Go to references"; }
     ;
     }
     ######
