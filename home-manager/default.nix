@@ -16,6 +16,8 @@ in
     jetbrains-toolbox
     slack
     git
+    _1password
+    _1password-gui
   ];
 
   programs.git = {
@@ -23,21 +25,18 @@ in
     # lfs.enable = true;
     userEmail = "yo.eight@gmail.com";
     userName = "YoEight";
-    signing.key = ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGtMMOPUb/XZ2wD/49TnTqWxcISgQDwgE4MdtvaCFOYF'';
     # signing.signByDefault = true;
-    signing.gpgPath = "${pkgs._1password-gui}/bin/op-ssh-sign";
-    # extraConfig = {
-    #   gpg.format = "ssh";
-    # };
+    extraConfig = {
+      gpg.format = "ssh";
+      user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGtMMOPUb/XZ2wD/49TnTqWxcISgQDwgE4MdtvaCFOYF";
+      gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+    };
   };
 
   programs.ssh = {
     enable = true;
     forwardAgent = true;
-    extraConfig = ''
-      Host *
-          IdentityAgent ${_1passwordPath}
-    '';
+    extraConfig = "IdentityAgent ${_1passwordPath}";
   };
 
   home.stateVersion = "23.11";
