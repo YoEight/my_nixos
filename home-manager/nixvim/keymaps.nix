@@ -3,7 +3,7 @@
     enable = true;
 
     registrations = {
-      "<leader>g" = "+go";
+      "g" = "+go";
       "<leader>w" = "+windows";
       "<leader>f" = "+file";
       "<leader>c" = "+code";
@@ -188,19 +188,19 @@
     ;
     }
     ###### Go
-    { key = "<leader>gD"
+    { key = "gD"
     ; action = "<cmd>lua vim.lsp.buf.declaration()<cr>"
     ; options = { desc = "Go to declaration"; }
     ;
     }
 
-    { key = "<leader>gd"
+    { key = "gd"
     ; action = "<cmd>lua vim.lsp.buf.definition()<cr>"
     ; options = { desc = "Go to definition"; }
     ;
     }
 
-    { key = "<leader>gr"
+    { key = "gr"
     ; action = "<cmd>lua vim.lsp.buf.references()<cr>"
     ; options = { desc = "Go to references"; }
     ;
