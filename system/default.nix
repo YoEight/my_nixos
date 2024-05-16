@@ -1,4 +1,5 @@
 { config, pkgs, ... }: {
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
   networking.hostName = "haestrom"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

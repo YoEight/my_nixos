@@ -5,7 +5,6 @@ let
     inherit pkgs;
     module = neovimConfig;
   };
-  _1passwordPath = "~/.1password/agent.sock";
 in
 {
   home.username = "yoeight";

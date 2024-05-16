@@ -2,7 +2,8 @@
 {
   plugins.treesitter =
   { enable = true
-  ; ensureInstalled = [ "rust"
+  ; ensureInstalled = [
+      "rust"
       "haskell"
       "java"
       "c_sharp"

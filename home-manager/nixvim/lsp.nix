@@ -1,27 +1,27 @@
 {...}:
 {
-  plugins.lsp-lines.enable = true;
+  # plugins.lsp-lines.enable = true;
 
   plugins.lsp = {
     enable = true;
 
     servers = {
-      nixd.enable = true;
+      # nixd.enable = true;
       lua-ls.enable = true;
     };
   };
 
-  plugins.nvim-cmp = {
+  plugins.cmp = {
     enable = true;
     snippet.expand = "luasnip";
 
-    mapping = {
-      "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-      "<C-f>" = "cmp.mapping.scroll_docs(4)";
-      "<C-e>" = "cmp.mapping.close()";
-      "<C-space>" = "cmp.mapping.complete()";
-      "<CR>" = "cmp.mapping.confirm({ select = true })";
-    };
+    # mapping = {
+    #   "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+    #   "<C-f>" = "cmp.mapping.scroll_docs(4)";
+    #   "<C-e>" = "cmp.mapping.close()";
+    #   "<C-space>" = "cmp.mapping.complete()";
+    #   "<CR>" = "cmp.mapping.confirm({ select = true })";
+    # };
 
     sources = [
       { name = "luasnip"; }

@@ -2,7 +2,7 @@
   imports = [
     ./keymaps.nix
     ./ui.nix
-    ./lsp.nix
+    # ./lsp.nix
     ./telescope.nix
     ./languages.nix
     ./utils.nix
