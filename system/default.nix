@@ -1,4 +1,9 @@
 { config, pkgs, ... }: {
+
+  imports = [
+    ./ld.nix
+  ];
+
   boot.kernelPackages = pkgs.linuxPackages_6_8;
   networking.hostName = "haestrom"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -96,8 +101,6 @@
 
   # Set the default editor to vim
   environment.variables.EDITOR = "nvim";
-
-  programs.nix-ld.enable = true;
 
   programs._1password-gui = {
     enable = true;
