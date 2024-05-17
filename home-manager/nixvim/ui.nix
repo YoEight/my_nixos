@@ -5,8 +5,8 @@
     enable = true;
     settings = {
       flavour = "mocha";
-      disableItalic = true;
-      disableBold = true;
+      no_italic = true;
+      no_bold = true;
       integrations = {
         cmp = true;
         gitsigns = true;
