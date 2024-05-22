@@ -9,9 +9,7 @@
   ];
 
   config = {
-    globals = {
-      mapleader = " ";
-    };
+    globals = { mapleader = " "; };
 
     options = {
       number = true;

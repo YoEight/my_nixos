@@ -1,5 +1,4 @@
-{...}:
-{ 
+{ ... }: {
   plugins.neo-tree.enable = true;
   colorschemes.catppuccin = {
     enable = true;

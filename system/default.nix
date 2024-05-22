@@ -1,8 +1,6 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./ld.nix
-  ];
+  imports = [ ./ld.nix ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_8;
   networking.hostName = "haestrom"; # Define your hostname.
@@ -38,9 +36,10 @@
     isNormalUser = true;
     description = "Yo Eight";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        #  thunderbird
+      ];
   };
 
   # Enable the X11 windowing system.
@@ -91,12 +90,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-     neovim
-     gnome.gnome-tweaks
-     _1password
-     _1password-gui
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    neovim
+    gnome.gnome-tweaks
+    _1password
+    _1password-gui
   ];
 
   # Set the default editor to vim
@@ -104,7 +103,7 @@
 
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["yoeight"];
+    polkitPolicyOwners = [ "yoeight" ];
   };
 
   virtualisation.docker = {
