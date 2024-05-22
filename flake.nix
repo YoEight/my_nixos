@@ -1,6 +1,6 @@
 {
   description = "A Simple NixOS flake";
-  
+
   inputs = {
     # NixOS official package source, using hte nixos-23.11 here
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -13,7 +13,8 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/6be28a941b39a7cbe4d34b577bd095548f5d1e15";
+      url =
+        "github:nix-community/nixvim/6be28a941b39a7cbe4d34b577bd095548f5d1e15";
       #url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -23,16 +24,17 @@
     nixosConfigurations.haestrom = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules = [
-	./configuration.nix
-	./system
+        ./configuration.nix
+        ./system
 
-	home-manager.nixosModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit inputs system ; };
-	  home-manager.useGlobalPkgs = true;
-	  home-manager.useUserPackages = true;
-
-	  home-manager.users.yoeight = import ./home-manager;
-	}
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.extraSpecialArgs = { inherit inputs system; };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.yoeight = import ./home-manager;
+        }
       ];
     };
   };
