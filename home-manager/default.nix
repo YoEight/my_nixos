@@ -58,6 +58,7 @@ in {
     userSettings = {
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
+      "editor.minimap.enabled" = false;
       "explorer.fileNesting.enabled" = true;
       "vim.useCrtlKeys" = true;
       "vim.useSystemClipboard" = true;
