@@ -94,6 +94,8 @@
     #  wget
     neovim
     gnome.gnome-tweaks
+    gnome.gnome-shell-extensions
+    yaru-theme
     _1password
     _1password-gui
   ];
