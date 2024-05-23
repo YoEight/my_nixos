@@ -20,22 +20,30 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }: {
-    nixosConfigurations.haestrom = nixpkgs.lib.nixosSystem rec {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }:
+    let
       system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        ./system
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.extraSpecialArgs = { inherit inputs system; };
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.yoeight = import ./home-manager;
-        }
-      ];
+      forEachMachine = host: acc: {
+        inherit acc;
+        ${host} = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/${host}/configuration.nix
+            ./system
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs system; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.yoeight = import ./home-manager;
+            }
+          ];
+        };
+      };
+    in {
+      nixosConfigurations = nixpkgs.lib.fold forEachMachine { } [ "haestrom" ];
     };
-  };
 }
