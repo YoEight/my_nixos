@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 
-  imports = [ ./ld.nix ];
+  imports = [ ./ld.nix ./fonts.nix ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_8;
   networking.hostName = "haestrom"; # Define your hostname.
