@@ -17,6 +17,7 @@ in {
     git
     _1password
     _1password-gui
+    zoom-us
   ];
 
   programs.git = {
@@ -68,6 +69,15 @@ in {
       "rust-analyzer.workspace.symbol.search.kind" = "all_symbols";
       "window.titleBarStyle" = "custom";
       "window.dialogStyle" = "custom";
+    };
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/mutter" = {
+        experimental-features = [ "scale-monitor-framebuffer" ];
+      };
     };
   };
 

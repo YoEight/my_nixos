@@ -51,7 +51,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   boot.initrd.luks.devices."luks-d9050d09-9270-46eb-b719-b24f54dcfc7a".device =
