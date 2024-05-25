@@ -5,16 +5,16 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "haestrom"; # Define your hostname.
+  networking.hostName = "rannoch"; # Define your hostname.
 
-  boot.initrd.luks.devices."luks-43d2eb5d-2dd3-4137-a17f-4cf1c2201653".device =
-    "/dev/disk/by-uuid/43d2eb5d-2dd3-4137-a17f-4cf1c2201653";
+  boot.initrd.luks.devices."luks-d9050d09-9270-46eb-b719-b24f54dcfc7a".device = "/dev/disk/by-uuid/d9050d09-9270-46eb-b719-b24f54dcfc7a";
 }

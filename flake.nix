@@ -44,6 +44,6 @@
         };
       };
     in {
-      nixosConfigurations = nixpkgs.lib.fold forEachMachine { } [ "haestrom" ];
+      nixosConfigurations = nixpkgs.lib.fold forEachMachine { } [ "rannoch" ];
     };
 }
