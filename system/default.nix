@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, host, ... }: {
 
   imports = [ ./ld.nix ./fonts.nix ];
 
@@ -50,10 +50,12 @@
 
   # Set GDM text scaling to match our GNOME scaling preference.
   # TODO - Move to scale-factor once all our programs supports fractional scaling.
-  programs.dconf.profiles.gdm.databases = [{
-    settings."org/gnome/desktop/interface".text-scaling-factor =
-      lib.gvariant.mkDouble 1.25;
-  }];
+  programs.dconf.profiles.gdm.databases =
+    let scale = if host == "rannoch" then 1.5 else 1.25;
+    in [{
+      settings."org/gnome/desktop/interface".text-scaling-factor =
+        lib.gvariant.mkDouble scale;
+    }];
 
   # Configure keymap in X11
   services.xserver.xkb = {
