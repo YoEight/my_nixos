@@ -16,8 +16,10 @@ in {
     git
     _1password
     _1password-gui
+    discord
     jetbrains.rider
     jetbrains.idea-ultimate
+    jetbrains.rust-rover
   ];
 
   programs.git = {
