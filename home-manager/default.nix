@@ -12,11 +12,12 @@ in {
   home.packages = with pkgs; [
     nvim
     nixfmt
-    jetbrains-toolbox
     slack
     git
     _1password
     _1password-gui
+    jetbrains.rider
+    jetbrains.idea-ultimate
   ];
 
   programs.git = {
