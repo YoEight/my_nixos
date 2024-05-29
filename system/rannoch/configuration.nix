@@ -54,6 +54,5 @@
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  boot.initrd.luks.devices."luks-d9050d09-9270-46eb-b719-b24f54dcfc7a".device =
-    "/dev/disk/by-uuid/d9050d09-9270-46eb-b719-b24f54dcfc7a";
+  boot.initrd.luks.devices."luks-4704b517-46d6-4c51-9e47-b87e7f518050".device = "/dev/disk/by-uuid/4704b517-46d6-4c51-9e47-b87e7f518050";
 }
