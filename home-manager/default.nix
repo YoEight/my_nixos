@@ -14,12 +14,28 @@ in {
     nixfmt
     slack
     git
+    direnv
     _1password
     _1password-gui
     discord
-    jetbrains.rider
-    jetbrains.idea-ultimate
-    jetbrains.rust-rover
+    zoom-us
+    jetbrains-toolbox
+
+    (writeShellScriptBin "start-rider" ''
+      "${config.home.homeDirectory}/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh" "$@"
+    '')
+
+    (writeShellScriptBin "start-rustrover" ''
+      "${config.home.homeDirectory}/.local/share/JetBrains/Toolbox/apps/rustrover/bin/rustrover.sh" "$@"
+    '')
+
+    (writeShellScriptBin "start-goland" ''
+      "${config.home.homeDirectory}/.local/share/JetBrains/Toolbox/apps/goland/bin/goland.sh" "$@"
+    '')
+
+    (writeShellScriptBin "start-idea" ''
+      "${config.home.homeDirectory}/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea.sh" "$@"
+    '')
   ];
 
   programs.git = {
@@ -72,6 +88,12 @@ in {
       "window.titleBarStyle" = "custom";
       "window.dialogStyle" = "custom";
     };
+  };
+
+  home.file.ideavimrc = {
+    enable = true;
+    source = ./.ideavimrc;
+    target = ".ideavimrc";
   };
 
   home.stateVersion = "23.11";
