@@ -4,31 +4,30 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/82c48175-7cc2-40f2-b77a-f3f95e3c859c";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/82c48175-7cc2-40f2-b77a-f3f95e3c859c";
+    fsType = "ext4";
+  };
 
-  boot.initrd.luks.devices."luks-7551f7c3-2759-4f02-9968-f9635e8e867d".device = "/dev/disk/by-uuid/7551f7c3-2759-4f02-9968-f9635e8e867d";
+  boot.initrd.luks.devices."luks-7551f7c3-2759-4f02-9968-f9635e8e867d".device =
+    "/dev/disk/by-uuid/7551f7c3-2759-4f02-9968-f9635e8e867d";
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EB78-BB86";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/EB78-BB86";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/491d82da-4265-46c6-ae62-216bfa90d0d6"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/491d82da-4265-46c6-ae62-216bfa90d0d6"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -40,5 +39,6 @@
   # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

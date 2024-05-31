@@ -28,7 +28,7 @@
         inherit acc;
         ${host} = nixpkgs.lib.nixosSystem {
           inherit system;
-	  specialArgs = { inherit inputs host; };
+          specialArgs = { inherit inputs host; };
           modules = [
             ./system/${host}/configuration.nix
             ./system
