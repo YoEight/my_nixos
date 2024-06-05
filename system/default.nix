@@ -90,6 +90,8 @@
     neovim
     _1password
     _1password-gui
+    # For secure boot debugging and testing.
+    sbctl
   ];
 
   # Set the default editor to vim

@@ -18,9 +18,14 @@
       #url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, lanzaboote, ... }:
     let
       system = "x86_64-linux";
 
@@ -30,6 +35,7 @@
           inherit system;
           specialArgs = { inherit inputs host; };
           modules = [
+	    lanzaboote.nixosModules.lanzaboote
             ./system/${host}/configuration.nix
             ./system
 
@@ -45,6 +51,6 @@
         };
       };
     in {
-      nixosConfigurations = nixpkgs.lib.fold forEachMachine { } [ "rannoch" ];
+      nixosConfigurations = nixpkgs.lib.fold forEachMachine { } [ "haestrom" ];
     };
 }
